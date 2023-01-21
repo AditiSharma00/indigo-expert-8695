@@ -10,10 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 // import { useDispatch, useSelector } from "react-redux";
-// import DrawerExample from "./DrawerExample";
 import { Link } from "react-router-dom";
 import { Center } from "@chakra-ui/react";
 import { FiUser } from "react-icons/fi";
+// import DrawerExample from "../DrawerExample";
 
 // import TextField from "@mui/material/TextField";
 // import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
@@ -25,9 +25,9 @@ import { FiUser } from "react-icons/fi";
 
 const Navbar = () => {
   const [hooks, setHooks] = useState(false);
-  // const [fresh, setFresh] = useState(false);
-  // const [name, setName] = useState("Account");
-  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const [fresh, setFresh] = useState(false);
+  const [name, setName] = useState("Account");
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [offerTitle, setOfferTitle] = useState(true);
   useEffect(() => {
     const changeTitle = setInterval(() => {
@@ -160,11 +160,11 @@ const Navbar = () => {
                 Sign in
               </Link>
               {/* <DrawerExample
-							isOpen={isOpen}
-							onOpen={onOpen}
-							onClose={onClose}
-							hooks={hooks}
-						/> */}
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                hooks={hooks}
+              /> */}
             </div>
           </div>
           <div
@@ -179,7 +179,7 @@ const Navbar = () => {
               <p>
                 <Link to="">Makeup</Link>
               </p>
-              <div className={styles.sc2111}>
+              <div className={styles.sc2111} style={{ marginTop: "16px" }}>
                 <div style={{ background: "white" }}>
                   <h3>
                     <Link to="/products">Face</Link>
