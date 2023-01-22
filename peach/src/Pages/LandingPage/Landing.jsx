@@ -5,9 +5,8 @@ import { ArrowUpIcon } from "@chakra-ui/icons";
 import React, { useState, useEffect } from "react";
 import { BallTriangle } from "react-loader-spinner";
 import { Flex } from "@chakra-ui/react";
-import Footer from "../../Components/Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar";
-import Carousel from "./MainPage/Container/Carousel";
+
+import Carousel from "./MainPage/Carousel";
 export default function LandingPage() {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
@@ -17,8 +16,7 @@ export default function LandingPage() {
   }, []);
   return (
     <div>
-      <Navbar />
-      {/* <Carousel start={Data.banner.start} /> */}
+      <Carousel />
       {!loader ? (
         <>
           <MainPage />
@@ -49,7 +47,6 @@ export default function LandingPage() {
           />
         </Flex>
       )}
-      <Footer />
     </div>
   );
 }

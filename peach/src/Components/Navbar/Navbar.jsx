@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { DragHandleIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
 import { CiLocationOn } from "react-icons/ci";
@@ -8,20 +8,18 @@ import { MdCardGiftcard } from "react-icons/md";
 import { GiHelp } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { useDisclosure } from "@chakra-ui/react";
-import axios from "axios";
-// import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Center } from "@chakra-ui/react";
+import {
+  Center,
+  Button,
+  VStack,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { SlHandbag } from "react-icons/sl";
 import { FiUser } from "react-icons/fi";
-// import DrawerExample from "../DrawerExample";
-
-// import TextField from "@mui/material/TextField";
-// import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-// import SmartphoneIcon from "@mui/icons-material/Smartphone";
-// import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
-// import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
-// import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-// import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { CiUser, CiHeart } from "react-icons/ci";
+// import { AuthContext } from "../Contexts/AuthContextProvider";
 
 const Navbar = () => {
   const [hooks, setHooks] = useState(false);
@@ -29,6 +27,10 @@ const Navbar = () => {
   const [name, setName] = useState("Account");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [offerTitle, setOfferTitle] = useState(true);
+  const { onToggle } = useDisclosure();
+  const navigate = useNavigate();
+
+  // const { isAuth, currentUser, logout } = useContext(AuthContext);
   useEffect(() => {
     const changeTitle = setInterval(() => {
       setOfferTitle((prev) => {
@@ -39,9 +41,8 @@ const Navbar = () => {
       clearInterval(changeTitle);
     };
   }, []);
-  const navigate = useNavigate();
   return (
-    <>
+    <div>
       {/* ...................top navbar............ */}
       <div
         className={styles.offerBanner}
@@ -92,6 +93,8 @@ const Navbar = () => {
 
       {/* ..............Top navbar................... */}
       {/*------------------SearchBar------------------ */}
+
+      {/* ................................ */}
       <div style={{ background: "white" }}>
         <div className={styles.Sc1}>
           <img
@@ -141,15 +144,15 @@ const Navbar = () => {
                   placeholder="Search on Nykaa"
                 />
               </div>
-              <Center
+              {/* <Center
                 display={hooks === true ? "none" : "block"}
                 m={2}
                 ml={5}
                 cursor={"pointer"}
               >
                 <FiUser />
-              </Center>
-              <Link
+              </Center> */}
+              {/* <Link
                 to="/signup"
                 style={{
                   display: hooks === true ? "none" : "block",
@@ -158,7 +161,35 @@ const Navbar = () => {
                 }}
               >
                 Sign in
-              </Link>
+              </Link> */}
+
+              <Button
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={600}
+                variant={"link"}
+                // onClick={() => (isAuth ? logout() : navigate("/login"))}
+              >
+                <VStack>
+                  <CiUser fontSize={"30px"} spacing={0} />
+                  <Text fontSize={"13px"}>
+                    {/* {isAuth ? "Hi, " + currentUser.first_name : "Profile"} */}
+                  </Text>
+                </VStack>
+              </Button>
+
+              <Button
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={600}
+                variant={"link"}
+                onClick={() => navigate("/cart")}
+              >
+                <VStack>
+                  <SlHandbag fontSize={30} spacing={0} />
+                  <Text fontSize={"13px"}>Bag</Text>
+                </VStack>
+              </Button>
               {/* <DrawerExample
                 isOpen={isOpen}
                 onOpen={onOpen}
@@ -166,7 +197,7 @@ const Navbar = () => {
                 hooks={hooks}
               /> */}
             </div>
-          </div>
+          </div>{" "}
           <div
             style={{ height: "100%", width: "5vw" }}
             onClick={() => setHooks(false)}
@@ -455,7 +486,7 @@ const Navbar = () => {
       </div>
 
       {/* .............................................. */}
-    </>
+    </div>
   );
 };
 
