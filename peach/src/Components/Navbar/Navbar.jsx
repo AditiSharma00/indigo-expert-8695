@@ -99,7 +99,7 @@ const Navbar = () => {
         <div className={styles.Sc1}>
           <img
             // border={"1px solid red"}
-            src="https://i.imgur.com/vpILPGd.png"
+            src="https://i.imgur.com/iMutmnj.png"
             alt=""
             onClick={() => navigate("/")}
           />

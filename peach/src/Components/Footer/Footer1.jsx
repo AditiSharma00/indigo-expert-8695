@@ -31,7 +31,7 @@ export default function Footer1() {
         <SimpleGrid columns={{ base: 1, sm: 2, md: 5 }} spacing={8}>
           <Stack align={"flex-start"}>
             <ListHeader>
-              <Image src={"https://i.imgur.com/79hOp4i.png"} alt="" />
+              <Image src={"https://i.imgur.com/iMutmnj.png"} width={"40%"} />
             </ListHeader>
             <Links
               href={

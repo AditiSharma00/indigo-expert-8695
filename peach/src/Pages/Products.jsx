@@ -88,13 +88,12 @@ const Products = () => {
         {
           // console.log(state.product)
           data?.map((item) => (
-            <Box border={"1px solid pink"}>
+            <Box>
               <div key={item.id}>
                 <Link to={`/products/${item.id}`}>
                   <Image
                     src={item.image}
                     h={"30%"}
-                    border={"1px solid pink"}
                     width={"100%"}
                     borderRadius={"20px"}
                     boxShadow={
@@ -124,7 +123,7 @@ const Products = () => {
                     localStorage.setItem("onprocess", JSON.stringify(obhj));
                   }}
                 >
-                  <Link to="/checkout">Add to Cart</Link>
+                  <Link to="/Checkout">Add to Cart</Link>
                 </Button>
               </div>
             </Box>
